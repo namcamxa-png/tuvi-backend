@@ -1,14 +1,12 @@
+# === Thư viện CHẠY SERVER (API đại sư) — đều có bản cài sẵn, không phải biên dịch ===
 fastapi>=0.110
 uvicorn[standard]>=0.29
 anthropic>=0.39
-py-iztro>=0.1.5
 pydantic>=2.6
-# Cho crawler nạp kho tri thức (crawl_tuvi.py) — không bắt buộc để chạy API
-requests>=2.31
-trafilatura>=1.6
-# RAG vector embedding
 numpy>=1.26
-# Chọn 1 nhà cung cấp embedding (bỏ dấu # ở dòng tương ứng):
-# voyageai>=0.2               # EMBED_PROVIDER=voyage  (khuyên dùng, cần VOYAGE_API_KEY)
-# openai>=1.40                # EMBED_PROVIDER=openai  (cần OPENAI_API_KEY)
-# sentence-transformers>=2.6  # EMBED_PROVIDER=local   (chạy máy, không tốn API)
+
+# GHI CHÚ:
+# - Lá số do WEB (iztro JS) lập sẵn rồi gửi lên -> KHÔNG cần py-iztro ở server.
+# - Các gói cho crawler/nạp KB (requests, trafilatura, pypdf) chỉ cài khi chạy
+#   trên máy, không cần trên server. Nếu sau này build vector thì thêm:
+#   voyageai>=0.2   (EMBED_PROVIDER=voyage, cần VOYAGE_API_KEY)

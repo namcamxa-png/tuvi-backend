@@ -39,7 +39,13 @@ from pydantic import BaseModel, Field
 
 import anthropic
 
-from tu_vi_engine import lap_la_so
+# Lá số thường do WEB (iztro JS) tính sẵn và gửi lên -> backend KHÔNG cần py-iztro.
+# Vẫn thử nạp engine py-iztro để tương thích ngược; không có cũng chạy bình thường.
+try:
+    from tu_vi_engine import lap_la_so
+except Exception as _e:  # py-iztro/PythonMonkey không cài được trên server -> bỏ qua
+    lap_la_so = None
+
 from system_prompt import SYSTEM_PROMPT, PROMPT_HOIDAP
 
 # ------------------------------------------------------------------ cấu hình
@@ -246,6 +252,22 @@ class LaSoRequest(BaseModel):
     gio: int = Field(..., ge=0, le=23)
     gioi_tinh: str
     ma_kich_hoat: Optional[str] = None
+    # Lá số do WEB (iztro) lập sẵn gửi lên (ưu tiên dùng, backend khỏi cần py-iztro)
+    tom_tat: Optional[str] = None
+    tat_ca_sao: Optional[List[str]] = None
+    menh_vo_chinh_dieu: Optional[bool] = False
+
+
+def _lay_la_so(req: "LaSoRequest"):
+    """Trả về (tom_tat, tat_ca_sao:set, menh_vo_chinh_dieu).
+    Ưu tiên lá số web (iztro) gửi lên; nếu không có thì thử py-iztro (nếu cài được)."""
+    if req.tom_tat:
+        return req.tom_tat, set(req.tat_ca_sao or []), bool(req.menh_vo_chinh_dieu)
+    if lap_la_so is None:
+        raise HTTPException(status_code=400,
+            detail="Thiếu dữ liệu lá số. Vui lòng bấm 'Tra cứu / lập lá số' trên web trước khi thỉnh Đại sư.")
+    kq = lap_la_so(req.nam, req.thang, req.ngay, req.gio, req.gioi_tinh)
+    return kq.get("tom_tat", ""), set(kq.get("tat_ca_sao", set())), bool(kq.get("menh_vo_chinh_dieu", False))
 
 class HoiDapRequest(LaSoRequest):
     cau_hoi: str = Field(..., min_length=3, max_length=500)
@@ -305,12 +327,14 @@ def luan_giai(req: LaSoRequest):
                 "la_so": None, "tu_cache": True}
     verify_code(req.ma_kich_hoat, consume=True)   # tạo mới -> trừ 1 lượt (THU PHÍ)
     try:
-        kq = lap_la_so(req.nam, req.thang, req.ngay, req.gio, req.gioi_tinh)
+        tom_tat, tat_ca_sao, menh_vcd = _lay_la_so(req)
+    except HTTPException:
+        raise
     except Exception as e:
         logger.exception("Lỗi lập lá số")
         raise HTTPException(status_code=400, detail=f"Không lập được lá số: {e}")
     try:
-        phu = loc_phu(kq["tat_ca_sao"], kq["menh_vo_chinh_dieu"], PHU_DB)
+        phu = loc_phu(tat_ca_sao, menh_vcd, PHU_DB)
     except Exception:
         phu = []
     try:
@@ -320,24 +344,26 @@ def luan_giai(req: LaSoRequest):
     kb_block = (f"Tri thức tham khảo (RAG, làm căn cứ, không chép nguyên văn):\n{_kb_text(kb)}\n\n" if kb else "")
     user_content = (
         "Lá số của Mệnh chủ (bản tóm tắt):\n"
-        f"{kq.get('tom_tat','')}\n\n"
+        f"{tom_tat}\n\n"
         f"Câu phú cổ ứng với lá số:\n{_phu_text(phu)}\n\n"
         f"{kb_block}"
         "Xin đại sư luận giải đầy đủ theo quy trình 4 bước."
     )
     luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=1500, temperature=0.8)
     _cache_set(key, {"luan_giai": luan, "phu_trich": phu})
-    return {"luan_giai": luan, "phu_trich": phu, "la_so": kq["la_so"], "tu_cache": False}
+    return {"luan_giai": luan, "phu_trich": phu, "la_so": None, "tu_cache": False}
 
 @app.post("/hoi-dai-su")
 def hoi_dai_su(req: HoiDapRequest):
     verify_code(req.ma_kich_hoat, consume=True)   # THU PHÍ
     try:
-        kq = lap_la_so(req.nam, req.thang, req.ngay, req.gio, req.gioi_tinh)
+        tom_tat, tat_ca_sao, menh_vcd = _lay_la_so(req)
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Không lập được lá số: {e}")
     try:
-        phu = loc_phu(kq["tat_ca_sao"], kq["menh_vo_chinh_dieu"], PHU_DB)
+        phu = loc_phu(tat_ca_sao, menh_vcd, PHU_DB)
     except Exception:
         phu = []
     try:
@@ -349,7 +375,7 @@ def hoi_dai_su(req: HoiDapRequest):
     kb_block = (f"Tri thức tham khảo:\n{_kb_text(kb)}\n\n" if kb else "")
     user_content = (
         "Tóm tắt lá số của Mệnh chủ:\n"
-        f"{kq.get('tom_tat','')}\n\n"
+        f"{tom_tat}\n\n"
         f"{kb_block}"
         f"Câu hỏi của Mệnh chủ: {req.cau_hoi.strip()}\n\n"
         "Xin đại sư trả lời đúng trọng tâm, dựa trên lá số."
