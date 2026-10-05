@@ -224,24 +224,28 @@ def goi_claude(system_prompt: str, user_content: str, max_tokens: int = 1500,
     def _try(params):
         return client.messages.create(**params)
 
+    # Model đời mới (Claude 5) mặc định BẬT "thinking" -> ăn hết token, không còn chỗ
+    # viết bài. Tắt thinking để model viết thẳng bài luận. Giữ cache_control để rẻ.
+    no_think = {"type": "disabled"}
     try:
         attempts = [
-            dict(base_params, temperature=temperature, system=sys_cache),  # đầy đủ (cache + temp)
-            dict(base_params, system=sys_cache),                            # bỏ temperature
-            dict(base_params, temperature=temperature, system=system_prompt),  # bỏ cache
-            dict(base_params, system=system_prompt),                        # tối giản
+            dict(base_params, system=sys_cache, thinking=no_think),           # tắt thinking + cache (ưu tiên)
+            dict(base_params, system=system_prompt, thinking=no_think),       # tắt thinking, system chuỗi
+            dict(base_params, system=sys_cache, temperature=temperature),     # (SDK không nhận thinking) cache + temp
+            dict(base_params, system=sys_cache),                              # cache
+            dict(base_params, system=system_prompt),                          # tối giản
         ]
         resp = None
-        last_type_err = None
+        last_err = None
         for p in attempts:
             try:
                 resp = _try(p)
                 break
-            except TypeError as te:
-                last_type_err = te
+            except (TypeError, anthropic.APIStatusError, anthropic.APIConnectionError) as e:
+                last_err = e
                 continue
         if resp is None:
-            raise last_type_err or RuntimeError("Không gọi được Claude")
+            raise last_err or RuntimeError("Không gọi được Claude")
     except anthropic.APIStatusError as e:
         logger.error("Claude API lỗi: %s", e)
         raise HTTPException(status_code=502, detail=f"Claude API lỗi: {getattr(e,'status_code','?')}")
