@@ -1,0 +1,1221 @@
+[
+  {
+    "id": "PHU_001",
+    "cach_cuc": "Tử Phủ đồng cung",
+    "dieu_kien": "Tử Vi và Thiên Phủ tọa thủ Mệnh tại cung Dần hoặc Thân.",
+    "cau_phu_han": "Tử Phủ đồng cung, chung thân phúc hậu.",
+    "nghia_han_viet": "Tử Vi và Thiên Phủ cùng một cung thì cả đời phúc dày, hậu vận tốt đẹp.",
+    "luan_giai_hien_dai": "Sự nghiệp: khí chất lãnh đạo ổn định, hợp quản lý cấp cao, điều hành tổ chức. Tài chính: vững vàng, biết tích lũy, ít khi túng thiếu. Tâm lý: tự trọng cao, trọng thể diện, cầu toàn. Rủi ro: dễ bảo thủ, ngại đổi mới; cần có Tả Hữu Xương Khúc phò tá mới thành đại khí, nếu đơn thủ dễ hữu danh vô thực.",
+    "sao_chinh": [
+      "Tử Vi",
+      "Thiên Phủ"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "tử",
+      "phủ",
+      "đồng",
+      "cung",
+      "tử vi",
+      "thiên phủ"
+    ]
+  },
+  {
+    "id": "PHU_002",
+    "cach_cuc": "Tử Phủ triều viên (Quân thần khánh hội)",
+    "dieu_kien": "Tử Vi, Thiên Phủ hội chiếu Mệnh cùng Tả Phụ, Hữu Bật, Văn Xương, Văn Khúc.",
+    "cau_phu_han": "Quân thần khánh hội, tài thiện kinh bang tế thế.",
+    "nghia_han_viet": "Vua tôi gặp hội vui, có tài kinh bang tế thế (giúp nước giúp đời).",
+    "luan_giai_hien_dai": "Sự nghiệp: quý cách lớn, có người tài phò tá, hợp vị trí đứng đầu, lãnh đạo doanh nghiệp/tổ chức lớn. Tài chính: giàu sang bền vững nhờ địa vị. Tâm lý: uy tín, có tầm nhìn. Rủi ro: nếu thiếu phụ tá (cô quân) thì dễ cô lập, quyền lực suy.",
+    "sao_chinh": [
+      "Tử Vi",
+      "Thiên Phủ",
+      "Tả Phụ",
+      "Hữu Bật",
+      "Văn Xương",
+      "Văn Khúc"
+    ],
+    "tags": [
+      "Thiên cát",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 1,
+    "keywords": [
+      "tử",
+      "phủ",
+      "triều",
+      "viên",
+      "quân",
+      "thần",
+      "khánh",
+      "hội",
+      "tử vi",
+      "thiên phủ",
+      "tả phụ",
+      "hữu bật",
+      "văn xương",
+      "văn khúc"
+    ]
+  },
+  {
+    "id": "PHU_003",
+    "cach_cuc": "Phủ Tướng triều viên",
+    "dieu_kien": "Thiên Phủ và Thiên Tướng cùng hội chiếu về cung Mệnh.",
+    "cau_phu_han": "Phủ Tướng triều viên, thiên chung thực lộc.",
+    "nghia_han_viet": "Thiên Phủ, Thiên Tướng chầu về Mệnh thì hưởng ngàn chung bổng lộc.",
+    "luan_giai_hien_dai": "Sự nghiệp: hợp quản trị, tài chính, ngành ổn định lâu dài, dễ giữ chức vụ có thực quyền. Tài chính: no đủ, có của ăn của để. Tâm lý: điềm đạm, chỉn chu, biết lo xa. Rủi ro: thiên về an toàn, thiếu đột phá.",
+    "sao_chinh": [
+      "Thiên Phủ",
+      "Thiên Tướng"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "phủ",
+      "tướng",
+      "triều",
+      "viên",
+      "thiên phủ",
+      "thiên tướng"
+    ]
+  },
+  {
+    "id": "PHU_004",
+    "cach_cuc": "Nhật Nguyệt chiếu bích",
+    "dieu_kien": "Thái Dương và Thái Âm tọa tại cung Điền Trạch ở Sửu hoặc Mùi.",
+    "cau_phu_han": "Nhật Nguyệt chiếu bích, hoàng kim vạn lạng.",
+    "nghia_han_viet": "Mặt trời mặt trăng chiếu vào vách (Điền Trạch) thì vàng bạc muôn lạng.",
+    "luan_giai_hien_dai": "Tài chính: rất vượng về bất động sản, nhà đất, tài sản tích lũy; dễ giàu từ đất đai. Sự nghiệp: hợp đầu tư, kinh doanh tài sản. Tâm lý: coi trọng tổ ấm, nền tảng. Rủi ro: nếu Nhật Nguyệt lạc hãm thì gia sản hao, cần giữ gìn.",
+    "sao_chinh": [
+      "Thái Dương",
+      "Thái Âm"
+    ],
+    "tags": [
+      "Thiên cát",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 1,
+    "keywords": [
+      "nhật",
+      "nguyệt",
+      "chiếu",
+      "bích",
+      "thái dương",
+      "thái âm"
+    ]
+  },
+  {
+    "id": "PHU_005",
+    "cach_cuc": "Nhật Nguyệt đồng lâm",
+    "dieu_kien": "Thái Dương và Thái Âm đồng cung thủ Mệnh tại Sửu hoặc Mùi.",
+    "cau_phu_han": "Nhật Nguyệt đồng lâm, quan cư hầu bá.",
+    "nghia_han_viet": "Mặt trời mặt trăng cùng tọa Mệnh thì làm quan tới hầu tước, bá tước.",
+    "luan_giai_hien_dai": "Sự nghiệp: tiềm năng địa vị cao, vừa có danh vừa có thực. Tâm lý: nội tâm phong phú, lúc hướng ngoại lúc trầm lắng (âm dương giao). Rủi ro: tại Sửu/Mùi một sao sáng một sao tối, tính cách mâu thuẫn, cảm xúc thất thường; cần cân bằng.",
+    "sao_chinh": [
+      "Thái Dương",
+      "Thái Âm"
+    ],
+    "tags": [
+      "Trung tính",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "nhật",
+      "nguyệt",
+      "đồng",
+      "lâm",
+      "thái dương",
+      "thái âm"
+    ]
+  },
+  {
+    "id": "PHU_006",
+    "cach_cuc": "Nhật lệ trung thiên (Thái Dương miếu vượng)",
+    "dieu_kien": "Thái Dương miếu vượng thủ Mệnh (đặc biệt tại Ngọ).",
+    "cau_phu_han": "Nhật lệ trung thiên, hữu chuyên quyền chi quý.",
+    "nghia_han_viet": "Mặt trời rực rỡ giữa trời, có cái quý của người nắm quyền chuyên.",
+    "luan_giai_hien_dai": "Sự nghiệp: hào quang, danh tiếng, hợp lãnh đạo, chính trị, giáo dục, truyền thông; dễ được chú ý. Tài chính: giàu về danh kéo theo lợi. Tâm lý: nhiệt thành, hào phóng, trách nhiệm. Rủi ro: dễ ôm đồm, phô trương, hao sức vì người khác.",
+    "sao_chinh": [
+      "Thái Dương"
+    ],
+    "tags": [
+      "Thiên cát",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 1,
+    "keywords": [
+      "nhật",
+      "lệ",
+      "trung",
+      "thiên",
+      "thái",
+      "dương",
+      "miếu",
+      "vượng",
+      "thái dương"
+    ]
+  },
+  {
+    "id": "PHU_007",
+    "cach_cuc": "Nhật xuất Phù Tang",
+    "dieu_kien": "Thái Dương thủ Mệnh tại cung Mão (mặt trời mọc phương Đông).",
+    "cau_phu_han": "Nhật xuất Phù Tang, quan tư lộc vị.",
+    "nghia_han_viet": "Mặt trời mọc nơi cây Phù Tang (phương Đông), làm quan có lộc vị.",
+    "luan_giai_hien_dai": "Sự nghiệp: khởi đầu hanh thông, công danh thuận buổi đầu đời, hợp phát sớm. Tài chính: thu nhập từ sự nghiệp công khai. Tâm lý: tràn đầy năng lượng, lạc quan. Rủi ro: cần duy trì bền, tránh rực sáng rồi tắt.",
+    "sao_chinh": [
+      "Thái Dương"
+    ],
+    "tags": [
+      "Cát cách",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 2,
+    "keywords": [
+      "nhật",
+      "xuất",
+      "phù",
+      "tang",
+      "thái dương"
+    ]
+  },
+  {
+    "id": "PHU_008",
+    "cach_cuc": "Nguyệt lãng thiên môn",
+    "dieu_kien": "Thái Âm miếu vượng thủ Mệnh tại cung Hợi (trăng sáng nơi cửa trời).",
+    "cau_phu_han": "Nguyệt lãng thiên môn, tiến tước phong hầu.",
+    "nghia_han_viet": "Trăng sáng nơi cửa trời (Hợi), được tiến tước phong hầu.",
+    "luan_giai_hien_dai": "Tài chính: chủ phú, giỏi tích lũy – đầu tư, dễ giàu ngầm, có bất động sản. Sự nghiệp: hợp tài chính, nghệ thuật, nghề tinh tế. Tâm lý: dịu dàng, trực giác tốt, lãng mạn. Rủi ro: đa cảm, hay suy nghĩ về đêm; nữ mệnh cách này rất đẹp.",
+    "sao_chinh": [
+      "Thái Âm"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "nguyệt",
+      "lãng",
+      "thiên",
+      "môn",
+      "thái âm"
+    ]
+  },
+  {
+    "id": "PHU_009",
+    "cach_cuc": "Thạch trung ẩn ngọc",
+    "dieu_kien": "Cự Môn thủ Mệnh tại Tý hoặc Ngọ, gặp Lộc/Quyền/Khoa.",
+    "cau_phu_han": "Cự Môn Tý Ngọ, thạch trung ẩn ngọc.",
+    "nghia_han_viet": "Cự Môn ở Tý Ngọ như ngọc ẩn trong đá, mài giũa ắt sáng.",
+    "luan_giai_hien_dai": "Sự nghiệp: tài năng tiềm ẩn, phát về sau; hợp nghề dùng ngôn từ (luật sư, giảng dạy, truyền thông, chuyên gia). Tài chính: kiếm bằng chuyên môn – tri thức. Tâm lý: sâu sắc, nghiên cứu, hoài nghi. Rủi ro: dễ thị phi khẩu thiệt, phải giữ lời.",
+    "sao_chinh": [
+      "Cự Môn"
+    ],
+    "tags": [
+      "Thiên hung",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "pháp lý",
+      "học vấn"
+    ],
+    "muc_do_cat_hung": -1,
+    "keywords": [
+      "thạch",
+      "trung",
+      "ẩn",
+      "ngọc",
+      "cự môn"
+    ]
+  },
+  {
+    "id": "PHU_010",
+    "cach_cuc": "Cự Cơ đồng cung (Cự Cơ Mão Dậu)",
+    "dieu_kien": "Cự Môn và Thiên Cơ đồng cung thủ Mệnh tại Mão hoặc Dậu.",
+    "cau_phu_han": "Cự Cơ cư Mão, công khanh chi vị.",
+    "nghia_han_viet": "Cự Môn Thiên Cơ ở Mão, đạt địa vị công khanh (quan lớn).",
+    "luan_giai_hien_dai": "Sự nghiệp: thông minh, giỏi tranh luận – mưu lược, hợp chính trị, luật, truyền thông, tư vấn. Tài chính: tài động theo trí tuệ. Tâm lý: nhanh nhạy, nhiều ý tưởng, hay thay đổi. Rủi ro: tại Dậu kém hơn Mão; dễ nói nhiều sinh hoạ, công việc biến động.",
+    "sao_chinh": [
+      "Thiên Cơ",
+      "Cự Môn"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "pháp lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "cự",
+      "cơ",
+      "đồng",
+      "cung",
+      "mão",
+      "dậu",
+      "thiên cơ",
+      "cự môn"
+    ]
+  },
+  {
+    "id": "PHU_011",
+    "cach_cuc": "Cơ Nguyệt Đồng Lương",
+    "dieu_kien": "Thiên Cơ, Thái Âm, Thiên Đồng, Thiên Lương hội hợp trong tam phương tứ chính của Mệnh.",
+    "cau_phu_han": "Cơ Nguyệt Đồng Lương tác lại nhân.",
+    "nghia_han_viet": "Cách Cơ Nguyệt Đồng Lương hợp làm người 'lại' (công chức, viên chức, chuyên viên).",
+    "luan_giai_hien_dai": "Sự nghiệp: hợp làm công ăn lương, hành chính, chuyên môn, kế hoạch, dịch vụ ổn định hơn là thương trường mạo hiểm. Tài chính: thu nhập đều, an toàn. Tâm lý: cẩn trọng, trách nhiệm, ưa ổn định. Rủi ro: thiếu bứt phá, ngại rủi ro, khó làm giàu nhanh.",
+    "sao_chinh": [
+      "Thiên Cơ",
+      "Thiên Đồng",
+      "Thái Âm",
+      "Thiên Lương"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "cơ",
+      "nguyệt",
+      "đồng",
+      "lương",
+      "thiên cơ",
+      "thiên đồng",
+      "thái âm",
+      "thiên lương"
+    ]
+  },
+  {
+    "id": "PHU_012",
+    "cach_cuc": "Sát Phá Tham",
+    "dieu_kien": "Thất Sát, Phá Quân, Tham Lang hội hợp trong tam phương tứ chính của Mệnh.",
+    "cau_phu_han": "Sát Phá Tham phùng, nhất sinh đa khởi phục.",
+    "nghia_han_viet": "Gặp cách Sát Phá Tham, cuộc đời nhiều thăng trầm lên xuống.",
+    "luan_giai_hien_dai": "Sự nghiệp: giàu nghị lực, dám khai phá, hợp khởi nghiệp, kinh doanh, nghề biến động, quân cảnh. Tài chính: lên nhanh xuống cũng nhanh, cần giữ thành quả. Tâm lý: mạnh mẽ, độc lập, ưa thay đổi. Rủi ro: biến động lớn, dễ được-mất thất thường; gặp sát tinh càng vất vả.",
+    "sao_chinh": [
+      "Tham Lang",
+      "Thất Sát",
+      "Phá Quân"
+    ],
+    "tags": [
+      "Thiên hung",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": -1,
+    "keywords": [
+      "sát",
+      "phá",
+      "tham",
+      "tham lang",
+      "thất sát",
+      "phá quân"
+    ]
+  },
+  {
+    "id": "PHU_013",
+    "cach_cuc": "Thất Sát triều đẩu",
+    "dieu_kien": "Thất Sát thủ Mệnh miếu vượng tại Dần, Thân, Tý, Ngọ.",
+    "cau_phu_han": "Thất Sát triều đẩu, tước lộc vinh xương.",
+    "nghia_han_viet": "Thất Sát chầu về sao Đẩu, tước vị bổng lộc vẻ vang hưng thịnh.",
+    "luan_giai_hien_dai": "Sự nghiệp: uy quyền, quyết đoán, hợp làm tướng – lãnh đạo, kinh doanh lớn, ngành cạnh tranh mạnh. Tài chính: tài do bản lĩnh mà có. Tâm lý: dũng cảm, chịu trách nhiệm, uy nghiêm. Rủi ro: nóng vội, cô khắc, dễ thụ thương nếu gặp sát; cần tiết chế.",
+    "sao_chinh": [
+      "Thất Sát"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "thất",
+      "sát",
+      "triều",
+      "đẩu",
+      "thất sát"
+    ]
+  },
+  {
+    "id": "PHU_014",
+    "cach_cuc": "Anh tinh nhập miếu (Phá Quân Tý Ngọ)",
+    "dieu_kien": "Phá Quân thủ Mệnh miếu vượng tại Tý hoặc Ngọ.",
+    "cau_phu_han": "Phá Quân Tý Ngọ, vị chí tam công.",
+    "nghia_han_viet": "Phá Quân ở Tý Ngọ, địa vị lên tới tam công (chức cao).",
+    "luan_giai_hien_dai": "Sự nghiệp: dám phá cũ lập mới, giàu sức bật, hợp cải tổ, khởi nghiệp, ngành đặc thù. Tài chính: phá rồi lập, hợp đầu tư mạo hiểm có tính toán. Tâm lý: tiên phong, cá tính, không ngại đổi thay. Rủi ro: bốc đồng, hao tán; cần kỷ luật tài chính.",
+    "sao_chinh": [
+      "Phá Quân"
+    ],
+    "tags": [
+      "Thiên hung",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "pháp lý"
+    ],
+    "muc_do_cat_hung": -1,
+    "keywords": [
+      "anh",
+      "tinh",
+      "nhập",
+      "miếu",
+      "phá",
+      "quân",
+      "tý",
+      "ngọ",
+      "phá quân"
+    ]
+  },
+  {
+    "id": "PHU_015",
+    "cach_cuc": "Vũ Khúc Tham Lang (Vũ Tham)",
+    "dieu_kien": "Vũ Khúc và Tham Lang đồng cung hoặc hội chiếu tại Sửu/Mùi.",
+    "cau_phu_han": "Vũ Khúc Tham Lang, tài cư tài vị, thái hữu kỳ tài.",
+    "nghia_han_viet": "Vũ Khúc Tham Lang đóng cung tài, có tài lộc đặc biệt lớn.",
+    "luan_giai_hien_dai": "Tài chính: rất vượng về kinh doanh, kiếm tiền, đầu tư; dễ phát về hậu vận (Vũ Tham phát muộn). Sự nghiệp: hợp thương mại, tài chính, giao tế. Tâm lý: thực tế, tham vọng, giao thiệp rộng. Rủi ro: ham hưởng thụ, dễ sa đà tửu sắc nếu gặp đào hoa – sát tinh.",
+    "sao_chinh": [
+      "Vũ Khúc",
+      "Tham Lang"
+    ],
+    "tags": [
+      "Thiên cát",
+      "tài lộc",
+      "sự nghiệp",
+      "tình duyên",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 1,
+    "keywords": [
+      "vũ",
+      "khúc",
+      "tham",
+      "lang",
+      "vũ khúc",
+      "tham lang"
+    ]
+  },
+  {
+    "id": "PHU_016",
+    "cach_cuc": "Hỏa Tham / Linh Tham cách",
+    "dieu_kien": "Tham Lang gặp Hỏa Tinh hoặc Linh Tinh đồng cung, miếu vượng.",
+    "cau_phu_han": "Tham Lang Hỏa Tinh cư miếu vượng, danh trấn chư bang.",
+    "nghia_han_viet": "Tham Lang gặp Hỏa Tinh nơi miếu vượng, danh tiếng vang dội các nước.",
+    "luan_giai_hien_dai": "Tài chính: cách phát tài nhanh, bất ngờ, hoạnh phát (trúng lớn, thời cơ đột biến). Sự nghiệp: dễ nổi danh nhanh, hợp ngành cạnh tranh – cơ hội. Tâm lý: nhạy thời cơ, bùng nổ. Rủi ro: phát nhanh dễ bại nhanh (hoạnh phát hoạnh phá), phải biết dừng và giữ.",
+    "sao_chinh": [
+      "Tham Lang",
+      "Hỏa Tinh",
+      "Linh Tinh"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "hỏa",
+      "tham",
+      "linh",
+      "cách",
+      "tham lang",
+      "hỏa tinh",
+      "linh tinh"
+    ]
+  },
+  {
+    "id": "PHU_017",
+    "cach_cuc": "Liêm Trinh Thất Sát (Liêm Sát)",
+    "dieu_kien": "Liêm Trinh và Thất Sát đồng cung tại Sửu hoặc Mùi.",
+    "cau_phu_han": "Liêm Trinh Thất Sát cư Mùi Sửu, lộ thượng mai thi.",
+    "nghia_han_viet": "Liêm Trinh Thất Sát ở Sửu Mùi gặp hung thì 'thây phơi đường', ý cảnh báo hiểm hoạ.",
+    "luan_giai_hien_dai": "Sự nghiệp: bản lĩnh, nguyên tắc, hợp ngành kỷ luật, kỹ thuật, kinh doanh cứng rắn. Tài chính: do nỗ lực lớn mà có. Tâm lý: cá tính mạnh, quyết liệt. Rủi ro: nếu gặp Kình Đà Hỏa Linh thì dễ tai nạn, kiện tụng, thương tật; cần cẩn trọng an toàn, pháp lý.",
+    "sao_chinh": [
+      "Liêm Trinh",
+      "Thất Sát"
+    ],
+    "tags": [
+      "Hung cách (cảnh báo)",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "pháp lý"
+    ],
+    "muc_do_cat_hung": -2,
+    "keywords": [
+      "liêm",
+      "trinh",
+      "thất",
+      "sát",
+      "liêm trinh",
+      "thất sát"
+    ]
+  },
+  {
+    "id": "PHU_018",
+    "cach_cuc": "Hùng tú triều nguyên (Nhật Nguyệt tịnh minh)",
+    "dieu_kien": "Thái Dương, Thái Âm đều miếu vượng và hội chiếu Mệnh cung.",
+    "cau_phu_han": "Nhật Nguyệt tịnh minh, tá cửu trùng ư Nghiêu điện.",
+    "nghia_han_viet": "Mặt trời mặt trăng cùng sáng, phò giúp bậc cửu trùng (vua) nơi điện Nghiêu.",
+    "luan_giai_hien_dai": "Sự nghiệp: quý hiển, hợp phò tá lãnh đạo, làm quản lý – cố vấn cấp cao. Tài chính: danh lợi song toàn. Tâm lý: cân bằng âm dương, vừa quyết đoán vừa tinh tế. Rủi ro: cần cả hai sao đều sáng; nếu một sao hãm thì cách giảm.",
+    "sao_chinh": [
+      "Thái Dương",
+      "Thái Âm"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "hùng",
+      "tú",
+      "triều",
+      "nguyên",
+      "nhật",
+      "nguyệt",
+      "tịnh",
+      "minh",
+      "thái dương",
+      "thái âm"
+    ]
+  },
+  {
+    "id": "PHU_019",
+    "cach_cuc": "Cự Nhật đồng cung",
+    "dieu_kien": "Cự Môn và Thái Dương đồng cung tại Dần (tốt) hoặc Thân.",
+    "cau_phu_han": "Cự Nhật đồng cung, quan phong tam đại.",
+    "nghia_han_viet": "Cự Môn Thái Dương cùng cung, làm quan vinh hiển ba đời.",
+    "luan_giai_hien_dai": "Sự nghiệp: hợp nghề dùng lời nói kết hợp danh tiếng – luật, giáo dục, truyền thông, chính trị, đối ngoại; dễ phát ở nước ngoài/môi trường quốc tế. Tài chính: thu nhập từ chuyên môn công khai. Tâm lý: chính trực, ăn nói có uy. Rủi ro: tại Thân kém hơn Dần; dễ thị phi nếu Thái Dương hãm.",
+    "sao_chinh": [
+      "Thái Dương",
+      "Cự Môn"
+    ],
+    "tags": [
+      "Thiên hung",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "pháp lý"
+    ],
+    "muc_do_cat_hung": -1,
+    "keywords": [
+      "cự",
+      "nhật",
+      "đồng",
+      "cung",
+      "thái dương",
+      "cự môn"
+    ]
+  },
+  {
+    "id": "PHU_020",
+    "cach_cuc": "Dương Lương Xương Lộc",
+    "dieu_kien": "Thái Dương, Thiên Lương tại Mão gặp Văn Xương và Lộc Tồn/Hóa Lộc.",
+    "cau_phu_han": "Dương Lương Xương Lộc, lư truyền đệ nhất danh.",
+    "nghia_han_viet": "Dương Lương gặp Xương Lộc thì thi cử đỗ đầu bảng (lư truyền: xướng danh).",
+    "luan_giai_hien_dai": "Sự nghiệp: cực hợp học hành, thi cử, nghiên cứu, giáo dục, công chức, chuyên gia có bằng cấp. Tài chính: ổn định từ tri thức – chức vị. Tâm lý: chính trực, ham học, có lý tưởng. Rủi ro: nếu thiếu Xương/Lộc thì cách không trọn, chỉ còn tốt vừa.",
+    "sao_chinh": [
+      "Thái Dương",
+      "Thiên Lương",
+      "Văn Xương",
+      "Lộc Tồn",
+      "Hóa Lộc"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "học vấn"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "dương",
+      "lương",
+      "xương",
+      "lộc",
+      "thái dương",
+      "thiên lương",
+      "văn xương",
+      "lộc tồn",
+      "hóa lộc"
+    ]
+  },
+  {
+    "id": "PHU_021",
+    "cach_cuc": "Thiên Đồng Thái Âm (Thủy trừng quế ngạc)",
+    "dieu_kien": "Thiên Đồng và Thái Âm đồng cung thủ Mệnh tại Tý.",
+    "cau_phu_han": "Đồng Âm cư Tý, Thủy trừng quế ngạc, đắc thanh yếu chi chức.",
+    "nghia_han_viet": "Đồng Âm ở Tý như nước trong soi nhánh quế, được chức vị thanh cao trọng yếu.",
+    "luan_giai_hien_dai": "Sự nghiệp: hợp ngành tinh tế, tài chính, nghệ thuật, nghề thanh nhã; có quý nhân nữ. Tài chính: tích lũy tốt, hưởng thụ. Tâm lý: hiền hòa, lãng mạn, giàu cảm xúc. Rủi ro: dễ đa cảm, an nhàn thiếu chí tiến thủ; nữ mệnh đẹp nhưng tình cảm nhiều sóng ngầm.",
+    "sao_chinh": [
+      "Thiên Đồng",
+      "Thái Âm"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "tình duyên",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "thiên",
+      "đồng",
+      "thái",
+      "âm",
+      "thủy",
+      "trừng",
+      "quế",
+      "ngạc",
+      "thiên đồng",
+      "thái âm"
+    ]
+  },
+  {
+    "id": "PHU_022",
+    "cach_cuc": "Thiên Lương Thái Dương (Nhật chiếu Lôi Môn)",
+    "dieu_kien": "Thái Dương Thiên Lương đồng cung tại Mão.",
+    "cau_phu_han": "Nhật chiếu Lôi Môn, phú quý vinh hoa.",
+    "nghia_han_viet": "Mặt trời chiếu cửa Sấm (Mão), phú quý vinh hoa.",
+    "luan_giai_hien_dai": "Sự nghiệp: hợp giáo dục, tư vấn, luật, y, giám sát, nghề có uy tín và che chở người khác. Tài chính: bền từ chuyên môn – danh tiếng. Tâm lý: chính trực, trách nhiệm, thích làm 'người thầy'. Rủi ro: cố chấp, hay can thiệp; cần linh hoạt.",
+    "sao_chinh": [
+      "Thái Dương",
+      "Thiên Lương"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "pháp lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "thiên",
+      "lương",
+      "thái",
+      "dương",
+      "nhật",
+      "chiếu",
+      "lôi",
+      "môn",
+      "thái dương",
+      "thiên lương"
+    ]
+  },
+  {
+    "id": "PHU_023",
+    "cach_cuc": "Mã đầu đới kiếm (Kình Dương cư Ngọ)",
+    "dieu_kien": "Kình Dương thủ Mệnh tại Ngọ, gặp cát tinh.",
+    "cau_phu_han": "Mã đầu đới kiếm, uy trấn biên cương.",
+    "nghia_han_viet": "Thanh kiếm đeo đầu ngựa, uy danh trấn giữ biên cương.",
+    "luan_giai_hien_dai": "Sự nghiệp: bản lĩnh, cương mãnh, hợp ngành kỷ luật, quân – cảnh, kỹ thuật, nghề cần quyết đoán va chạm. Tài chính: do dấn thân mà có. Tâm lý: mạnh mẽ, ý chí sắt. Rủi ro: dễ thị phi, thương tật, va chạm; phải kiềm chế nóng nảy, chọn nghề có tính 'chế sát'.",
+    "sao_chinh": [
+      "Kình Dương"
+    ],
+    "tags": [
+      "Hung cách (cảnh báo)",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "pháp lý"
+    ],
+    "muc_do_cat_hung": -2,
+    "keywords": [
+      "mã",
+      "đầu",
+      "đới",
+      "kiếm",
+      "kình",
+      "dương",
+      "cư",
+      "ngọ",
+      "kình dương"
+    ]
+  },
+  {
+    "id": "PHU_024",
+    "cach_cuc": "Khoa Quyền Lộc hội (Tam kỳ gia hội)",
+    "dieu_kien": "Hóa Khoa, Hóa Quyền, Hóa Lộc cùng hội về Mệnh hoặc tam phương tứ chính.",
+    "cau_phu_han": "Khoa Quyền Lộc củng, danh dự chiêu chương.",
+    "nghia_han_viet": "Khoa Quyền Lộc chầu về, danh dự rạng rỡ vang xa.",
+    "luan_giai_hien_dai": "Sự nghiệp: đại cát, công danh hanh thông, dễ thành đạt, thăng tiến nhanh, có cả danh – quyền – lợi. Tài chính: tài lộc dồi dào. Tâm lý: tự tin, được trọng dụng. Rủi ro: hiếm; chỉ cần tránh tự mãn, giữ đạo đức để bền.",
+    "sao_chinh": [
+      "Hóa Lộc",
+      "Hóa Quyền",
+      "Hóa Khoa"
+    ],
+    "tags": [
+      "Cát cách",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 3,
+    "keywords": [
+      "khoa",
+      "quyền",
+      "lộc",
+      "hội",
+      "tam",
+      "kỳ",
+      "gia",
+      "hóa lộc",
+      "hóa quyền",
+      "hóa khoa"
+    ]
+  },
+  {
+    "id": "PHU_025",
+    "cach_cuc": "Song Lộc triều viên",
+    "dieu_kien": "Lộc Tồn và Hóa Lộc cùng hội chiếu Mệnh cung.",
+    "cau_phu_han": "Song Lộc triều viên, nhất sinh phú quý.",
+    "nghia_han_viet": "Hai sao Lộc chầu về Mệnh, cả đời phú quý.",
+    "luan_giai_hien_dai": "Tài chính: rất vượng, nhiều nguồn thu, dễ tích lũy của cải. Sự nghiệp: thuận lợi về lợi ích vật chất, hợp kinh doanh. Tâm lý: an tâm về tiền bạc. Rủi ro: nếu gặp Không Kiếp/Kỵ phá thì lộc hao; tránh ham lợi mà mất nghĩa.",
+    "sao_chinh": [
+      "Lộc Tồn",
+      "Hóa Lộc"
+    ],
+    "tags": [
+      "Thiên cát",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 1,
+    "keywords": [
+      "song",
+      "lộc",
+      "triều",
+      "viên",
+      "lộc tồn",
+      "hóa lộc"
+    ]
+  },
+  {
+    "id": "PHU_026",
+    "cach_cuc": "Lộc Mã giao trì",
+    "dieu_kien": "Lộc Tồn (hoặc Hóa Lộc) và Thiên Mã cùng cung hoặc hội chiếu.",
+    "cau_phu_han": "Lộc Mã giao trì, phát tài viễn quận.",
+    "nghia_han_viet": "Lộc và Mã gặp nhau, phát tài ở nơi xa (ngoài quê).",
+    "luan_giai_hien_dai": "Tài chính: tài lộc năng động, phát về di chuyển, kinh doanh, thương mại, đất khách, xuất ngoại. Sự nghiệp: hợp nghề di động, đối ngoại, logistics. Tâm lý: năng động, thích bôn ba. Rủi ro: vất vả chạy ngược xuôi; an cư một chỗ thì tài giảm.",
+    "sao_chinh": [
+      "Lộc Tồn",
+      "Thiên Mã",
+      "Hóa Lộc"
+    ],
+    "tags": [
+      "Thiên hung",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": -1,
+    "keywords": [
+      "lộc",
+      "mã",
+      "giao",
+      "trì",
+      "lộc tồn",
+      "thiên mã",
+      "hóa lộc"
+    ]
+  },
+  {
+    "id": "PHU_027",
+    "cach_cuc": "Tả Phụ Hữu Bật hội Mệnh",
+    "dieu_kien": "Tả Phụ và Hữu Bật đồng cung hoặc giáp/hội chiếu Mệnh.",
+    "cau_phu_han": "Tả Phụ Hữu Bật, chung thân phúc hậu.",
+    "nghia_han_viet": "Có Tả Phụ Hữu Bật thì trọn đời phúc dày, nhiều người giúp.",
+    "luan_giai_hien_dai": "Sự nghiệp: nhiều quý nhân phò tá, hợp lãnh đạo – quản lý, làm việc luôn có người đỡ. Tài chính: thuận nhờ hợp tác. Tâm lý: được lòng người, đôn hậu. Rủi ro: nếu chỉ có một sao (cô Phụ/cô Bật) thì giúp đỡ nửa vời; cần cả cặp mới trọn.",
+    "sao_chinh": [
+      "Tả Phụ",
+      "Hữu Bật"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "tả",
+      "phụ",
+      "hữu",
+      "bật",
+      "hội",
+      "mệnh",
+      "tả phụ",
+      "hữu bật"
+    ]
+  },
+  {
+    "id": "PHU_028",
+    "cach_cuc": "Văn Xương Văn Khúc hội Mệnh",
+    "dieu_kien": "Văn Xương và Văn Khúc đồng cung hoặc giáp Mệnh.",
+    "cau_phu_han": "Văn Xương Văn Khúc, vị chí đài phụ.",
+    "nghia_han_viet": "Có Xương Khúc thì địa vị lên tới đài phụ (quan phụ chính).",
+    "luan_giai_hien_dai": "Sự nghiệp: thông tuệ, văn tài, hợp học thuật, nghiên cứu, viết lách, nghệ thuật, nghề trí óc; rất lợi thi cử. Tài chính: kiếm bằng tri thức – tài hoa. Tâm lý: tinh tế, lãng mạn, ham học. Rủi ro: đa tình, mơ mộng; gặp sát dễ 'hữu tài vô phận'.",
+    "sao_chinh": [
+      "Văn Xương",
+      "Văn Khúc"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "tình duyên",
+      "sức khỏe/tâm lý",
+      "học vấn"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "văn",
+      "xương",
+      "khúc",
+      "hội",
+      "mệnh",
+      "văn xương",
+      "văn khúc"
+    ]
+  },
+  {
+    "id": "PHU_029",
+    "cach_cuc": "Thiên Ất quý nhân (Khôi Việt hội Mệnh)",
+    "dieu_kien": "Thiên Khôi và Thiên Việt hội chiếu hoặc giáp Mệnh.",
+    "cau_phu_han": "Khôi Việt phùng Mệnh, vị liệt tam thai.",
+    "nghia_han_viet": "Khôi Việt gặp Mệnh, địa vị xếp hàng tam thai (quan cao).",
+    "luan_giai_hien_dai": "Sự nghiệp: nhiều quý nhân nâng đỡ, gặp cơ hội tốt, thi cử – công danh thuận, dễ được cất nhắc. Tài chính: nhờ quý nhân mà hanh. Tâm lý: may mắn, được tin cậy. Rủi ro: ỷ lại quý nhân, thiếu tự lập thì phúc mỏng dần.",
+    "sao_chinh": [
+      "Thiên Khôi",
+      "Thiên Việt"
+    ],
+    "tags": [
+      "Thiên cát",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "học vấn"
+    ],
+    "muc_do_cat_hung": 1,
+    "keywords": [
+      "thiên",
+      "ất",
+      "quý",
+      "nhân",
+      "khôi",
+      "việt",
+      "hội",
+      "mệnh",
+      "thiên khôi",
+      "thiên việt"
+    ]
+  },
+  {
+    "id": "PHU_030",
+    "cach_cuc": "Tử Vi Tham Lang (Đào hoa phạm chủ)",
+    "dieu_kien": "Tử Vi và Tham Lang đồng cung tại Mão hoặc Dậu, gặp đào hoa tinh.",
+    "cau_phu_han": "Tử Vi Tham Lang đồng cung, đào hoa phạm chủ vi chí dâm.",
+    "nghia_han_viet": "Tử Vi Tham Lang cùng cung, đào hoa phạm vào đế tinh thì dễ đa tình sa đà.",
+    "luan_giai_hien_dai": "Sự nghiệp: giao thiệp rộng, có sức hút, hợp ngoại giao, kinh doanh quan hệ, giải trí. Tài chính: tài từ quan hệ. Tâm lý: hào hoa, nhiều ham muốn. Rủi ro: dễ sa đà tình cảm – tửu sắc, ảnh hưởng uy tín; cần tiết chế, gặp Không Kiếp hóa giải thì tu tâm.",
+    "sao_chinh": [
+      "Tử Vi",
+      "Tham Lang"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "tình duyên",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "tử",
+      "vi",
+      "tham",
+      "lang",
+      "đào",
+      "hoa",
+      "phạm",
+      "chủ",
+      "tử vi",
+      "tham lang"
+    ]
+  },
+  {
+    "id": "PHU_031",
+    "cach_cuc": "Thiên Phủ lâm Tuất (Phủ khố)",
+    "dieu_kien": "Thiên Phủ thủ Mệnh tại Tuất, gặp Lộc, không gặp Không Kiếp.",
+    "cau_phu_han": "Thiên Phủ lâm Tuất hữu tinh phù, yêu kim y tử.",
+    "nghia_han_viet": "Thiên Phủ ở Tuất có sao phò, thì đeo đai vàng mặc áo tía (quý hiển).",
+    "luan_giai_hien_dai": "Tài chính: kho tàng đầy, giỏi quản lý – giữ của, hợp tài chính, bất động sản. Sự nghiệp: địa vị ổn định, quản trị tốt. Tâm lý: cẩn trọng, bao dung, đáng tin. Rủi ro: 'Phủ khố' nếu gặp Không Kiếp thành 'kho rỗng' (lộ khố) – hao tài, cần tránh.",
+    "sao_chinh": [
+      "Thiên Phủ"
+    ],
+    "tags": [
+      "Thiên hung",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": -1,
+    "keywords": [
+      "thiên",
+      "phủ",
+      "lâm",
+      "tuất",
+      "khố",
+      "thiên phủ"
+    ]
+  },
+  {
+    "id": "PHU_032",
+    "cach_cuc": "Thiên Đồng Thiên Lương (Đồng Lương)",
+    "dieu_kien": "Thiên Đồng và Thiên Lương đồng cung thủ Mệnh tại Dần hoặc Thân.",
+    "cau_phu_han": "Đồng Lương thủ Mệnh, phúc thọ song toàn.",
+    "nghia_han_viet": "Đồng Lương thủ Mệnh thì phúc và thọ đều trọn vẹn.",
+    "luan_giai_hien_dai": "Sự nghiệp: hợp dịch vụ, giáo dục, y – chăm sóc, tư vấn, nghề nhẹ nhàng ổn định. Tài chính: đủ đầy, an nhàn. Tâm lý: hiền hòa, lạc quan, giàu tình thương. Rủi ro: an phận, thiếu tham vọng; dễ bỏ lỡ cơ hội lớn.",
+    "sao_chinh": [
+      "Thiên Đồng",
+      "Thiên Lương"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "tình duyên",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "thiên",
+      "đồng",
+      "lương",
+      "thiên đồng",
+      "thiên lương"
+    ]
+  },
+  {
+    "id": "PHU_033",
+    "cach_cuc": "Thiên Cơ Thiên Lương (Cơ Lương)",
+    "dieu_kien": "Thiên Cơ và Thiên Lương đồng cung tại Thìn hoặc Tuất.",
+    "cau_phu_han": "Cơ Lương gia hội, thiện đàm binh.",
+    "nghia_han_viet": "Cơ Lương hội hợp thì giỏi bàn việc binh (mưu lược, chiến lược).",
+    "luan_giai_hien_dai": "Sự nghiệp: mưu lược, giỏi tham mưu – hoạch định – phân tích, hợp cố vấn, chiến lược, nghiên cứu, tôn giáo – triết học. Tài chính: tài từ trí tuệ. Tâm lý: thâm trầm, thích suy ngẫm. Rủi ro: nghĩ nhiều làm ít, dễ 'thầy nói hay hơn làm'.",
+    "sao_chinh": [
+      "Thiên Cơ",
+      "Thiên Lương"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "học vấn"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "thiên",
+      "cơ",
+      "lương",
+      "thiên cơ",
+      "thiên lương"
+    ]
+  },
+  {
+    "id": "PHU_034",
+    "cach_cuc": "Hình tù giáp ấn",
+    "dieu_kien": "Thiên Tướng (ấn tinh) bị Liêm Trinh hóa Kỵ (tù) và Kình Dương (hình) giáp cung.",
+    "cau_phu_han": "Hình tù giáp ấn, hình trượng nan đào.",
+    "nghia_han_viet": "Hình và tù kẹp ấn tinh, khó tránh hình phạt (kiện tụng, tai ương).",
+    "luan_giai_hien_dai": "Rủi ro: cảnh báo pháp lý – kiện tụng, tai tiếng, thị phi nghề nghiệp; cần cẩn trọng giấy tờ, hợp đồng, bảo lãnh. Sự nghiệp: nếu hành nghề luật – an ninh thì lại 'dĩ sát chế sát' hóa tốt. Tâm lý: dễ căng thẳng, oan ức. Lời khuyên: giữ mình đúng luật, tránh đứng tên hộ.",
+    "sao_chinh": [
+      "Liêm Trinh",
+      "Thiên Tướng",
+      "Kình Dương"
+    ],
+    "tags": [
+      "Hung cách (cảnh báo)",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "pháp lý"
+    ],
+    "muc_do_cat_hung": -2,
+    "keywords": [
+      "hình",
+      "tù",
+      "giáp",
+      "ấn",
+      "liêm trinh",
+      "thiên tướng",
+      "kình dương"
+    ]
+  },
+  {
+    "id": "PHU_035",
+    "cach_cuc": "Linh Xương Đà Vũ (hung cách)",
+    "dieu_kien": "Linh Tinh, Văn Xương, Đà La, Vũ Khúc hội tụ (nhất là tại Thìn Tuất).",
+    "cau_phu_han": "Linh Xương Đà Vũ, hạn chí đầu hà.",
+    "nghia_han_viet": "Gặp cách Linh Xương Đà Vũ, vận hạn tới dễ nghĩ quẫn (trầm cảm, bi quan cực độ).",
+    "luan_giai_hien_dai": "Rủi ro: cảnh báo tâm lý nặng – khủng hoảng tinh thần, bi quan khi gặp hạn xấu; cần đặc biệt quan tâm sức khỏe tinh thần, tránh quyết định tiêu cực. Lời khuyên: nương tựa người thân, thiền – tu dưỡng, tìm hỗ trợ chuyên môn khi vận hạn tới; không nên xem là 'định mệnh' mà chủ động phòng ngừa.",
+    "sao_chinh": [
+      "Vũ Khúc",
+      "Văn Xương",
+      "Đà La",
+      "Linh Tinh"
+    ],
+    "tags": [
+      "Hung cách (cảnh báo)",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": -2,
+    "keywords": [
+      "linh",
+      "xương",
+      "đà",
+      "vũ",
+      "hung",
+      "cách",
+      "vũ khúc",
+      "văn xương",
+      "đà la",
+      "linh tinh"
+    ]
+  },
+  {
+    "id": "PHU_036",
+    "cach_cuc": "Tham Lang gặp Không Kiếp",
+    "dieu_kien": "Tham Lang thủ Mệnh gặp Địa Không, Địa Kiếp.",
+    "cau_phu_han": "Tham ngộ Không Kiếp, phản bất vi dâm, phản chủ phát phúc.",
+    "nghia_han_viet": "Tham Lang gặp Không Kiếp thì ngược lại không còn sa đà, trái lại sinh phúc (hướng thiện, tu tâm).",
+    "luan_giai_hien_dai": "Tâm lý: tiết chế dục vọng, hướng về tâm linh – nghệ thuật – nghiên cứu thay vì hưởng lạc. Sự nghiệp: hợp ngành sáng tạo, tôn giáo, triết học, kỹ thuật khác lạ. Tài chính: ít bon chen vật chất. Rủi ro: hóa giải được tính đào hoa, nhưng dễ 'khác người', cần môi trường hợp.",
+    "sao_chinh": [
+      "Tham Lang",
+      "Địa Không",
+      "Địa Kiếp"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "tình duyên",
+      "sức khỏe/tâm lý",
+      "học vấn"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "tham",
+      "lang",
+      "gặp",
+      "không",
+      "kiếp",
+      "tham lang",
+      "địa không",
+      "địa kiếp"
+    ]
+  },
+  {
+    "id": "PHU_037",
+    "cach_cuc": "Tử Vi gặp Thất Sát (Hóa sát vi quyền)",
+    "dieu_kien": "Tử Vi và Thất Sát đồng cung tại Tỵ hoặc Hợi.",
+    "cau_phu_han": "Tử Vi Thất Sát hóa quyền, phản tác trinh tường.",
+    "nghia_han_viet": "Tử Vi gặp Thất Sát thì sát khí hóa thành quyền uy, trở nên tốt lành.",
+    "luan_giai_hien_dai": "Sự nghiệp: uy quyền lớn, bản lĩnh chỉ huy, hợp lãnh đạo ngành khó, cải tổ, quân – doanh. Tài chính: tài do nắm quyền – khai phá. Tâm lý: cương nghị, có khí phách thủ lĩnh. Rủi ro: độc đoán, áp lực lớn; cần nhân hòa để thu phục người.",
+    "sao_chinh": [
+      "Tử Vi",
+      "Thất Sát"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "tử",
+      "vi",
+      "gặp",
+      "thất",
+      "sát",
+      "hóa",
+      "quyền",
+      "tử vi",
+      "thất sát"
+    ]
+  },
+  {
+    "id": "PHU_038",
+    "cach_cuc": "Mệnh vô chính diệu",
+    "dieu_kien": "Cung Mệnh không có chính tinh tọa thủ, mượn sao cung Thiên Di (đối cung).",
+    "cau_phu_han": "Mệnh vô chính diệu, tá tinh an Mệnh; đắc tam không nhi phát phúc.",
+    "nghia_han_viet": "Mệnh không chính tinh thì mượn sao đối cung; nếu gặp 'tam không' lại phát phúc.",
+    "luan_giai_hien_dai": "Tâm lý: tính cách mềm dẻo, thích nghi cao, giỏi tùy thời, dễ chịu ảnh hưởng môi trường. Sự nghiệp: hợp nương theo thời thế, làm cùng người mạnh; phát muộn mà bền. Tài chính: thăng trầm buổi đầu. Rủi ro: thiếu chủ kiến, dễ dao động; cần xác định mục tiêu rõ, chọn 'quý nhân' và môi trường tốt.",
+    "sao_chinh": [],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "mệnh",
+      "vô",
+      "chính",
+      "diệu"
+    ]
+  },
+  {
+    "id": "PHU_039",
+    "cach_cuc": "Cự Môn hãm địa gặp sát",
+    "dieu_kien": "Cự Môn lạc hãm thủ Mệnh, gặp Kình Dương/Đà La/Hóa Kỵ.",
+    "cau_phu_han": "Cự Môn thủ Mệnh hãm địa, chủ thị phi khẩu thiệt.",
+    "nghia_han_viet": "Cự Môn thủ Mệnh nơi hãm địa, chủ nhiều thị phi, cãi vã, điều tiếng.",
+    "luan_giai_hien_dai": "Rủi ro: dễ vướng thị phi, hiểu lầm, tranh chấp lời nói, mâu thuẫn đồng nghiệp; hao tổn vì 'cái miệng'. Tâm lý: hoài nghi, hay lo. Lời khuyên: tu khẩu đức, cẩn trọng phát ngôn – hợp đồng; chuyển hóa bằng nghề dùng lời chính đáng (luật, dạy, tư vấn) thì thị phi thành chuyên môn.",
+    "sao_chinh": [
+      "Cự Môn",
+      "Kình Dương",
+      "Đà La",
+      "Hóa Kỵ"
+    ],
+    "tags": [
+      "Thiên hung",
+      "sự nghiệp",
+      "sức khỏe/tâm lý",
+      "pháp lý"
+    ],
+    "muc_do_cat_hung": -1,
+    "keywords": [
+      "cự",
+      "môn",
+      "hãm",
+      "địa",
+      "gặp",
+      "sát",
+      "cự môn",
+      "kình dương",
+      "đà la",
+      "hóa kỵ"
+    ]
+  },
+  {
+    "id": "PHU_040",
+    "cach_cuc": "Vũ Khúc hóa Kỵ (tài tinh bị phá)",
+    "dieu_kien": "Vũ Khúc hóa Kỵ thủ Mệnh hoặc cung Tài Bạch, gặp sát tinh.",
+    "cau_phu_han": "Vũ Khúc hóa Kỵ, tài khốn kỳ thân.",
+    "nghia_han_viet": "Vũ Khúc (tài tinh) hóa Kỵ thì tiền bạc làm khốn đốn tấm thân.",
+    "luan_giai_hien_dai": "Rủi ro: cảnh báo tài chính – vướng nợ, kẹt vốn, tranh chấp tiền bạc, đầu tư thua lỗ; tiền là nguồn phiền não. Tài chính: cần quản trị dòng tiền chặt, tránh vay mượn – bảo lãnh – đầu cơ. Tâm lý: áp lực vì tiền, dễ cứng nhắc. Lời khuyên: làm ngành chuyên môn vững, tích lũy từ từ, tránh 'tham thì thâm'.",
+    "sao_chinh": [
+      "Vũ Khúc"
+    ],
+    "tags": [
+      "Hung cách (cảnh báo)",
+      "tài lộc",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": -2,
+    "keywords": [
+      "vũ",
+      "khúc",
+      "hóa",
+      "kỵ",
+      "tài",
+      "tinh",
+      "bị",
+      "phá",
+      "vũ khúc"
+    ]
+  },
+  {
+    "id": "PHU_041",
+    "cach_cuc": "Nhật Nguyệt phản bối",
+    "dieu_kien": "Thái Dương hoặc Thái Âm lạc hãm thủ Mệnh/Thân (quay lưng ánh sáng), VD Thái Dương tại Tuất/Hợi, Thái Âm tại Thìn/Tỵ.",
+    "cau_phu_han": "Nhật Nguyệt phản bối, lao lực bôn ba.",
+    "nghia_han_viet": "Mặt trời/mặt trăng quay lưng (lạc hãm) thì vất vả, bôn ba cực nhọc.",
+    "luan_giai_hien_dai": "Sự nghiệp: khởi đầu vất vả, phải tự lập, bôn ba xa quê; hợp nghề cần bền bỉ, chịu khó. Tài chính: tích lũy chậm, lên bằng nỗ lực. Tâm lý: dễ cảm thấy không được ghi nhận đúng mức. Rủi ro/hóa giải: nếu hội cát (Xương Khúc, Tả Hữu, tam hóa cát) có thể 'hãm phản vi cát' — chuyển bại thành phú quý muộn; cần kiên trì, đi xa/đổi môi trường lại hợp.",
+    "sao_chinh": [
+      "Thái Dương",
+      "Thái Âm"
+    ],
+    "tags": [
+      "Trung tính",
+      "tài lộc",
+      "sự nghiệp",
+      "sức khỏe/tâm lý"
+    ],
+    "muc_do_cat_hung": 0,
+    "keywords": [
+      "nhật",
+      "nguyệt",
+      "phản",
+      "bối",
+      "thái dương",
+      "thái âm"
+    ]
+  },
+  {
+    "id": "PHU_042",
+    "cach_cuc": "Khoa Lộc Tuần phùng",
+    "dieu_kien": "Hóa Khoa và Hóa Lộc có nguy cơ đồng cung (Khoa phá Lộc), cần sao Tuần (Tuần Không) chặn giữ Khoa lại.",
+    "cau_phu_han": "Khoa Lộc Tuần phùng, Chu Bột hân nhiên nhập tướng.",
+    "nghia_han_viet": "Khoa–Lộc gặp sao Tuần giữ lại, như Chu Bột hân hoan được vào hàng tể tướng.",
+    "luan_giai_hien_dai": "Sự nghiệp: khi Khoa (danh/thi cử) và Lộc (tài) cùng cung thì Khoa dễ 'phá Lộc' (lợi học hành nhưng hại tài); có sao Tuần chặn Khoa thì giữ được Lộc → công danh hiển hách. Tài chính: tốt khi Lộc đi cùng Quyền, dè chừng khi Lộc đồng cung Khoa mà không có Tuần chế. Bài học: Hóa Lộc nên kết Hóa Quyền, kỵ đồng cung Hóa Khoa.",
+    "sao_chinh": [
+      "Hóa Lộc",
+      "Hóa Khoa"
+    ],
+    "tags": [
+      "Thiên cát",
+      "tài lộc",
+      "sự nghiệp",
+      "học vấn"
+    ],
+    "muc_do_cat_hung": 1,
+    "keywords": [
+      "khoa",
+      "lộc",
+      "tuần",
+      "phùng",
+      "hóa lộc",
+      "hóa khoa"
+    ]
+  }
+]

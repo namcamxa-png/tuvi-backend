@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Secrets / môi trường — KHÔNG commit API key
+.env
+*.env
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Dữ liệu chạy & kho crawl (KHÔNG commit — sinh trên server, dễ vướng bản quyền)
+access_codes.json
+orders.json
+luan_cache.json
+tuvi_kb.jsonl
+tuvi_vectors.npz
+tuvi_vectors.npz.meta.jsonl

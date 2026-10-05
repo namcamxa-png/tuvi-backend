@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Luận Giải Tử Vi — Thái Bình Sơn Nhân</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<style>
+  :root{--ground:#F4F0E6;--surface:#FBF9F3;--ink:#23271F;--muted:#6B7263;--line:#E4DECE;
+    --primary:#2E5A49;--primary-deep:#1F3D33;--accent:#B07B4F;
+    --serif:"Lora",Georgia,serif;--sans:"Be Vietnam Pro",system-ui,"Segoe UI",sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    font-weight:300;line-height:1.7;padding:24px}
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-family:var(--serif);font-size:26px;color:var(--primary);margin:0 0 6px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .row{display:grid;gap:8px;margin-bottom:16px}
+  label{font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  input,select{font-family:var(--sans);font-size:15px;padding:13px 14px;border-radius:11px;
+    border:1px solid var(--line);background:var(--ground);color:var(--ink);width:100%}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.grid{grid-template-columns:1fr}}
+  button{font-family:var(--sans);font-weight:500;font-size:15px;padding:14px 26px;border-radius:999px;
+    border:none;background:var(--primary);color:#FBF9F3;cursor:pointer;width:100%;margin-top:6px;transition:.2s}
+  button:hover{background:var(--primary-deep)}
+  button:disabled{opacity:.6;cursor:not-allowed}
+  #ketqua{margin-top:26px;display:none}
+  .box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .box h2,.box h3{font-family:var(--serif);color:var(--primary)}
+  .box em{color:var(--accent)}
+  .loading{text-align:center;color:var(--muted);padding:30px;font-style:italic}
+  .err{color:#B23A3A;background:#fbeeee;border:1px solid #e8c9c9;border-radius:12px;padding:14px;margin-top:16px}
+  .note{font-size:12px;color:var(--muted);margin-top:14px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🔮 Luận Giải Tử Vi</h1>
+  <div class="sub">Đại sư Thái Bình Sơn Nhân — nhập ngày giờ sinh để được luận giải.</div>
+
+  <div class="card">
+    <div class="grid">
+      <div class="row">
+        <label for="ngaysinh">Ngày sinh (dương lịch)</label>
+        <input id="ngaysinh" type="date" min="1920-01-01" max="2030-12-31">
+      </div>
+      <div class="row">
+        <label for="gio">Giờ sinh</label>
+        <select id="gio">
+          <option value="0">Tý (23g–1g)</option>
+          <option value="2">Sửu (1g–3g)</option>
+          <option value="4">Dần (3g–5g)</option>
+          <option value="6">Mão (5g–7g)</option>
+          <option value="8">Thìn (7g–9g)</option>
+          <option value="10">Tỵ (9g–11g)</option>
+          <option value="12" selected>Ngọ (11g–13g)</option>
+          <option value="14">Mùi (13g–15g)</option>
+          <option value="16">Thân (15g–17g)</option>
+          <option value="18">Dậu (17g–19g)</option>
+          <option value="20">Tuất (19g–21g)</option>
+          <option value="22">Hợi (21g–23g)</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <label for="gioitinh">Giới tính</label>
+      <select id="gioitinh"><option value="nam">Nam</option><option value="nu">Nữ</option></select>
+    </div>
+    <button id="btn" onclick="luanGiai()">Thỉnh đại sư luận giải →</button>
+    <div class="note">Kết quả mang tính tham khảo • Đức năng thắng số</div>
+    <div id="loi"></div>
+  </div>
+
+  <div id="ketqua"><div class="box" id="noidung"></div></div>
+</div>
+
+<script>
+  // ====== ĐỔI THÀNH ĐỊA CHỈ BACKEND CỦA SẾP ======
+  const API_BASE = "http://localhost:8000";   // vd production: "https://api.ungdungcamxa.com"
+
+  async function luanGiai(){
+    const loi = document.getElementById('loi'); loi.innerHTML='';
+    const btn = document.getElementById('btn');
+    const ngay = document.getElementById('ngaysinh').value;
+    if(!ngay){ loi.innerHTML='<div class="err">Vui lòng chọn ngày sinh.</div>'; return; }
+    const [nam,thang,ng] = ngay.split('-').map(Number);
+    const payload = {
+      nam, thang, ngay: ng,
+      gio: parseInt(document.getElementById('gio').value,10),
+      gioi_tinh: document.getElementById('gioitinh').value
+    };
+
+    btn.disabled = true; btn.textContent = 'Đại sư đang luận...';
+    const kq = document.getElementById('ketqua');
+    const nd = document.getElementById('noidung');
+    kq.style.display='block';
+    nd.innerHTML = '<div class="loading">🌿 Thái Bình Sơn Nhân đang nghiền ngẫm lá số của Mệnh chủ...</div>';
+
+    try{
+      const res = await fetch(API_BASE + '/luan-giai', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      if(!res.ok){
+        const e = await res.json().catch(()=>({detail:res.statusText}));
+        throw new Error(e.detail || ('Lỗi '+res.status));
+      }
+      const data = await res.json();
+      nd.innerHTML = marked.parse(data.luan_giai || 'Không có nội dung.');
+    }catch(err){
+      nd.innerHTML = '';
+      loi.innerHTML = '<div class="err">Không luận giải được: '+err.message+
+        '. Kiểm tra backend đã chạy và API_BASE đúng chưa.</div>';
+      kq.style.display='none';
+    }finally{
+      btn.disabled=false; btn.textContent='Thỉnh đại sư luận giải →';
+    }
+  }
+</script>
+</body>
+</html>
