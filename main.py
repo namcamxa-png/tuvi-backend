@@ -250,10 +250,19 @@ def goi_claude(system_prompt: str, user_content: str, max_tokens: int = 1500,
     except Exception as e:
         logger.exception("Lỗi gọi Claude")
         raise HTTPException(status_code=500, detail=f"Lỗi khi gọi Claude: {e}")
-    parts = [getattr(b, "text", "") for b in resp.content if getattr(b, "text", "")]
+    # Trích text từ mọi khối content (bỏ qua khối thinking/khác)
+    parts = []
+    for b in (resp.content or []):
+        t = getattr(b, "text", None)
+        if t:
+            parts.append(t)
     ket_qua = "\n".join(parts).strip()
     if not ket_qua:
-        raise HTTPException(status_code=502, detail="Claude không trả về nội dung.")
+        types = [getattr(b, "type", "?") for b in (resp.content or [])]
+        sr = getattr(resp, "stop_reason", "?")
+        logger.error("Claude rỗng: stop_reason=%s block_types=%s", sr, types)
+        raise HTTPException(status_code=502,
+            detail=f"Claude không trả về nội dung (stop_reason={sr}, blocks={types}).")
     return ket_qua
 
 # ------------------------------------------------------------------ FastAPI app
@@ -371,7 +380,7 @@ def luan_giai(req: LaSoRequest):
         f"{kb_block}"
         "Xin đại sư luận giải đầy đủ theo quy trình 4 bước."
     )
-    luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=1500, temperature=0.8)
+    luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=4000, temperature=0.8)
     _cache_set(key, {"luan_giai": luan, "phu_trich": phu})
     return {"luan_giai": luan, "phu_trich": phu, "la_so": None, "tu_cache": False}
 
@@ -402,7 +411,7 @@ def hoi_dai_su(req: HoiDapRequest):
         f"Câu hỏi của Mệnh chủ: {req.cau_hoi.strip()}\n\n"
         "Xin đại sư trả lời đúng trọng tâm, dựa trên lá số."
     )
-    tra_loi = goi_claude(PROMPT_HOIDAP, user_content, max_tokens=700, temperature=0.85, model=QA_MODEL)
+    tra_loi = goi_claude(PROMPT_HOIDAP, user_content, max_tokens=1500, temperature=0.85, model=QA_MODEL)
     return {"tra_loi": tra_loi, "cau_hoi": req.cau_hoi}
 
 @app.post("/admin/tao-ma")
