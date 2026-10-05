@@ -1,7 +1,7 @@
 fastapi>=0.110
 uvicorn[standard]>=0.29
 anthropic>=0.39
-py-iztro>=0.2.0
+py-iztro>=0.1.5
 pydantic>=2.6
 # Cho crawler nạp kho tri thức (crawl_tuvi.py) — không bắt buộc để chạy API
 requests>=2.31
