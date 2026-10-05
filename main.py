@@ -211,15 +211,37 @@ def _get_client() -> anthropic.Anthropic:
 def goi_claude(system_prompt: str, user_content: str, max_tokens: int = 1500,
                temperature: float = 0.8, model: str = None) -> str:
     client = _get_client()
+    # Gọi có khả năng tự thích ứng với nhiều phiên bản SDK anthropic:
+    # nếu SDK không nhận 'temperature' -> bỏ; nếu không nhận system dạng list
+    # (prompt caching) -> hạ về system dạng chuỗi.
+    base_params = dict(
+        model=model or CLAUDE_MODEL,
+        max_tokens=max_tokens,
+        messages=[{"role": "user", "content": user_content}],
+    )
+    sys_cache = [{"type": "text", "text": system_prompt, "cache_control": {"type": "ephemeral"}}]
+
+    def _try(params):
+        return client.messages.create(**params)
+
     try:
-        resp = client.messages.create(
-            model=model or CLAUDE_MODEL,
-            max_tokens=max_tokens,
-            temperature=temperature,
-            # Prompt caching: system prompt tĩnh -> cache lại, các lần gọi sau giảm ~90% token system
-            system=[{"type": "text", "text": system_prompt, "cache_control": {"type": "ephemeral"}}],
-            messages=[{"role": "user", "content": user_content}],
-        )
+        attempts = [
+            dict(base_params, temperature=temperature, system=sys_cache),  # đầy đủ (cache + temp)
+            dict(base_params, system=sys_cache),                            # bỏ temperature
+            dict(base_params, temperature=temperature, system=system_prompt),  # bỏ cache
+            dict(base_params, system=system_prompt),                        # tối giản
+        ]
+        resp = None
+        last_type_err = None
+        for p in attempts:
+            try:
+                resp = _try(p)
+                break
+            except TypeError as te:
+                last_type_err = te
+                continue
+        if resp is None:
+            raise last_type_err or RuntimeError("Không gọi được Claude")
     except anthropic.APIStatusError as e:
         logger.error("Claude API lỗi: %s", e)
         raise HTTPException(status_code=502, detail=f"Claude API lỗi: {getattr(e,'status_code','?')}")
