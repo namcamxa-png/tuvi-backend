@@ -375,7 +375,7 @@ def luan_giai(req: LaSoRequest):
             raise HTTPException(status_code=400, detail="Thiếu dữ liệu thần số (web chưa gửi các con số).")
         user_content = ("Các con số Thần Số của Mệnh chủ:\n" + tt +
                         "\n\nXin đại sư luận giải Thần Số đầy đủ, dễ hiểu theo quy trình 4 phần.")
-        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=2500, temperature=0.85)
+        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=3500, temperature=0.85)
         _cache_set(key, {"luan_giai": luan, "phu_trich": []})
         return {"luan_giai": luan, "phu_trich": [], "la_so": None, "tu_cache": False}
 
