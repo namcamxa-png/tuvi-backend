@@ -374,8 +374,9 @@ def luan_giai(req: LaSoRequest):
         if not tt:
             raise HTTPException(status_code=400, detail="Thiếu dữ liệu thần số (web chưa gửi các con số).")
         user_content = ("Các con số Thần Số của Mệnh chủ:\n" + tt +
-                        "\n\nXin đại sư luận giải Thần Số đầy đủ, dễ hiểu theo quy trình 4 phần.")
-        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=3500, temperature=0.85)
+                        "\n\nXin đại sư luận giải Thần Số đầy đủ, dễ hiểu theo quy trình 5 phần, "
+                        "KẾT THÚC bằng phần Điểm Tốt · Điểm Xấu · Giải Pháp rõ ràng.")
+        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=5000, temperature=0.85)
         _cache_set(key, {"luan_giai": luan, "phu_trich": []})
         return {"luan_giai": luan, "phu_trich": [], "la_so": None, "tu_cache": False}
 
@@ -401,9 +402,10 @@ def luan_giai(req: LaSoRequest):
         f"{tom_tat}\n\n"
         f"Câu phú cổ ứng với lá số:\n{_phu_text(phu)}\n\n"
         f"{kb_block}"
-        "Xin đại sư luận giải đầy đủ theo quy trình 4 bước."
+        "Xin đại sư luận giải đầy đủ theo quy trình 4 bước, "
+        "KẾT THÚC bằng Bước 4: Điểm Tốt · Điểm Xấu · Giải Pháp rõ ràng."
     )
-    luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=4000, temperature=0.8)
+    luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=5000, temperature=0.8)
     _cache_set(key, {"luan_giai": luan, "phu_trich": phu})
     return {"luan_giai": luan, "phu_trich": phu, "la_so": None, "tu_cache": False}
 
