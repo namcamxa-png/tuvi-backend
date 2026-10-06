@@ -376,7 +376,7 @@ def luan_giai(req: LaSoRequest):
         user_content = ("Các con số Thần Số của Mệnh chủ:\n" + tt +
                         "\n\nXin đại sư luận giải Thần Số đầy đủ, dễ hiểu theo quy trình 5 phần, "
                         "KẾT THÚC bằng phần Điểm Tốt · Điểm Xấu · Giải Pháp rõ ràng.")
-        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=5000, temperature=0.85)
+        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=6500, temperature=0.85)
         _cache_set(key, {"luan_giai": luan, "phu_trich": []})
         return {"luan_giai": luan, "phu_trich": [], "la_so": None, "tu_cache": False}
 
@@ -405,7 +405,7 @@ def luan_giai(req: LaSoRequest):
         "Xin đại sư luận giải đầy đủ theo quy trình 4 bước, "
         "KẾT THÚC bằng Bước 4: Điểm Tốt · Điểm Xấu · Giải Pháp rõ ràng."
     )
-    luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=5000, temperature=0.8)
+    luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=6500, temperature=0.8)
     _cache_set(key, {"luan_giai": luan, "phu_trich": phu})
     return {"luan_giai": luan, "phu_trich": phu, "la_so": None, "tu_cache": False}
 
