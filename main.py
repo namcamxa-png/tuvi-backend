@@ -46,7 +46,7 @@ try:
 except Exception as _e:  # py-iztro/PythonMonkey không cài được trên server -> bỏ qua
     lap_la_so = None
 
-from system_prompt import SYSTEM_PROMPT, PROMPT_HOIDAP
+from system_prompt import SYSTEM_PROMPT, PROMPT_HOIDAP, PROMPT_THANSO, PROMPT_HOIDAP_THANSO
 
 # ------------------------------------------------------------------ cấu hình
 logging.basicConfig(level=logging.INFO)
@@ -110,7 +110,12 @@ CACHE_ENABLE = os.getenv("CACHE_ENABLE", "true").lower() in ("1", "true", "yes")
 def _cache_key(req) -> str:
     # gắn năm hiện tại để tự làm mới khi sang năm mới (vì luận có lưu niên)
     nam_now = time.localtime().tm_year
-    return f"{req.nam}-{req.thang}-{req.ngay}-{req.gio}-{str(req.gioi_tinh).lower()}-{nam_now}"
+    loai = (getattr(req, "loai", "tu_vi") or "tu_vi")
+    extra = ""
+    if loai == "than_so":
+        import hashlib
+        extra = "-" + hashlib.md5((getattr(req, "tom_tat", "") or "").encode("utf-8")).hexdigest()[:8]
+    return f"{loai}-{req.nam}-{req.thang}-{req.ngay}-{req.gio}-{str(req.gioi_tinh).lower()}{extra}-{nam_now}"
 
 def _cache_get(key):
     if not CACHE_ENABLE:
@@ -291,6 +296,7 @@ class LaSoRequest(BaseModel):
     tom_tat: Optional[str] = None
     tat_ca_sao: Optional[List[str]] = None
     menh_vo_chinh_dieu: Optional[bool] = False
+    loai: Optional[str] = "tu_vi"   # "tu_vi" | "than_so"
 
 
 def _lay_la_so(req: "LaSoRequest"):
@@ -361,6 +367,19 @@ def luan_giai(req: LaSoRequest):
         return {"luan_giai": cached.get("luan_giai", ""), "phu_trich": cached.get("phu_trich", []),
                 "la_so": None, "tu_cache": True}
     verify_code(req.ma_kich_hoat, consume=True)   # tạo mới -> trừ 1 lượt (THU PHÍ)
+
+    # ----- Nhánh THẦN SỐ HỌC -----
+    if (req.loai or "tu_vi") == "than_so":
+        tt = (req.tom_tat or "").strip()
+        if not tt:
+            raise HTTPException(status_code=400, detail="Thiếu dữ liệu thần số (web chưa gửi các con số).")
+        user_content = ("Các con số Thần Số của Mệnh chủ:\n" + tt +
+                        "\n\nXin đại sư luận giải Thần Số đầy đủ, dễ hiểu theo quy trình 4 phần.")
+        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=2500, temperature=0.85)
+        _cache_set(key, {"luan_giai": luan, "phu_trich": []})
+        return {"luan_giai": luan, "phu_trich": [], "la_so": None, "tu_cache": False}
+
+    # ----- Nhánh TỬ VI (mặc định) -----
     try:
         tom_tat, tat_ca_sao, menh_vcd = _lay_la_so(req)
     except HTTPException:
@@ -391,6 +410,18 @@ def luan_giai(req: LaSoRequest):
 @app.post("/hoi-dai-su")
 def hoi_dai_su(req: HoiDapRequest):
     verify_code(req.ma_kich_hoat, consume=True)   # THU PHÍ
+
+    # ----- Nhánh THẦN SỐ HỌC -----
+    if (req.loai or "tu_vi") == "than_so":
+        tt = (req.tom_tat or "").strip()
+        user_content = ("Các con số Thần Số của Mệnh chủ:\n" + tt +
+                        f"\n\nCâu hỏi của Mệnh chủ: {req.cau_hoi.strip()}\n\n"
+                        "Xin đại sư trả lời đúng trọng tâm, dựa trên các con số.")
+        tra_loi = goi_claude(PROMPT_HOIDAP_THANSO, user_content, max_tokens=1200,
+                             temperature=0.85, model=QA_MODEL)
+        return {"tra_loi": tra_loi, "cau_hoi": req.cau_hoi}
+
+    # ----- Nhánh TỬ VI (mặc định) -----
     try:
         tom_tat, tat_ca_sao, menh_vcd = _lay_la_so(req)
     except HTTPException:
