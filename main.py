@@ -55,8 +55,12 @@ logger = logging.getLogger("tuvi-api")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "").strip()
 CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-3-5-sonnet-latest")   # luận giải đầy đủ
 QA_MODEL = os.getenv("QA_MODEL", "claude-3-5-haiku-latest")           # Hỏi-Đáp (rẻ hơn)
-DEEP_MODEL = os.getenv("DEEP_MODEL", "claude-sonnet-5-5")             # luận SÂU (model mạnh + thinking)
-THINK_BUDGET = int(os.getenv("THINK_BUDGET", "3000"))                # token để model "suy nghĩ" nội bộ
+# Luận SÂU: thử lần lượt các model mạnh, cái nào API key có quyền thì dùng (KHÔNG thinking -> nhanh)
+DEEP_MODELS = [m.strip() for m in os.getenv(
+    "DEEP_MODELS",
+    "claude-sonnet-5-5,claude-sonnet-4-5,claude-sonnet-4-0,claude-3-7-sonnet-latest"
+).split(",") if m.strip()]
+LAST_MODEL_USED = os.getenv("CLAUDE_MODEL", "claude-3-5-sonnet-latest")  # model vừa trả lời (chẩn đoán)
 PHU_DB_PATH = os.getenv("PHU_DB_PATH", "database_phu.json")
 MAX_PHU = int(os.getenv("MAX_PHU", "8"))
 
@@ -224,81 +228,53 @@ def _extract_text(resp) -> str:
             parts.append(t)
     return "\n".join(parts).strip()
 
+def _try_model(client, model, system_prompt, sys_cache, messages, max_tokens, temperature=0.8):
+    """Gọi 1 model (KHÔNG thinking). Trả text nếu được; None nếu model lỗi/rỗng -> thử model khác."""
+    no_think = {"type": "disabled"}
+    variants = [
+        dict(system=sys_cache, thinking=no_think),
+        dict(system=system_prompt, thinking=no_think),
+        dict(system=sys_cache, temperature=temperature),
+        dict(system=sys_cache),
+        dict(system=system_prompt),
+    ]
+    for v in variants:
+        try:
+            r = client.messages.create(model=model, max_tokens=max_tokens, messages=messages, **v)
+            kq = _extract_text(r)
+            if kq:
+                return kq
+            # rỗng -> thử biến thể gọi khác của cùng model
+        except TypeError:
+            continue  # SDK không nhận tham số này -> đổi kiểu gọi
+        except (anthropic.APIStatusError, anthropic.APIConnectionError) as e:
+            logger.warning("Model %s lỗi: %s", model, e)
+            return None  # model không dùng được -> bỏ, thử model khác
+    return None
+
 def goi_claude(system_prompt: str, user_content: str, max_tokens: int = 1500,
                temperature: float = 0.8, model: str = None,
                deep: bool = False, think_budget: int = 0) -> str:
     """
-    deep=True  -> dùng DEEP_MODEL (Sonnet) + extended thinking: model NGẪM SÂU lá số
-                  trong đầu rồi viết bản luận cô đọng, chạm đúng. Nếu lỗi/rỗng -> tự lùi
-                  về Haiku (không thinking) để KHÔNG BAO GIỜ trả rỗng.
+    deep=True -> thử lần lượt các model MẠNH (DEEP_MODELS); cái nào API key có quyền thì
+                 dùng, rồi mới lùi về Haiku (CLAUDE_MODEL). Không dùng thinking -> nhanh.
     """
+    global LAST_MODEL_USED
     client = _get_client()
     sys_cache = [{"type": "text", "text": system_prompt, "cache_control": {"type": "ephemeral"}}]
     messages = [{"role": "user", "content": user_content}]
 
-    # ---------- 1) Chế độ SÂU: model mạnh + thinking ----------
-    if deep:
-        tb = think_budget or THINK_BUDGET
-        mt = max(max_tokens, tb + 1500)            # max_tokens phải > ngân sách nghĩ
-        think = {"type": "enabled", "budget_tokens": tb}
-        # thinking BẬT thì KHÔNG được set temperature tùy ý -> bỏ temperature
-        deep_attempts = [
-            dict(model=DEEP_MODEL, max_tokens=mt, messages=messages, system=sys_cache, thinking=think),
-            dict(model=DEEP_MODEL, max_tokens=mt, messages=messages, system=system_prompt, thinking=think),
-        ]
-        for p in deep_attempts:
-            try:
-                r = client.messages.create(**p)
-                kq = _extract_text(r)
-                if kq:
-                    return kq
-                logger.warning("Deep model rỗng (stop=%s) -> thử tiếp/fallback", getattr(r, "stop_reason", "?"))
-            except (TypeError, anthropic.APIStatusError, anthropic.APIConnectionError) as e:
-                logger.warning("Deep model lỗi: %s -> fallback", e)
-        logger.warning("DEEP không ra kết quả -> lùi về Haiku (%s)", CLAUDE_MODEL)
-
-    # ---------- 2) Mặc định / fallback: Haiku (không thinking) ----------
-    base_params = dict(
-        model=model or CLAUDE_MODEL,
-        max_tokens=max_tokens,
-        messages=messages,
-    )
-    no_think = {"type": "disabled"}
-    try:
-        attempts = [
-            dict(base_params, system=sys_cache, thinking=no_think),
-            dict(base_params, system=system_prompt, thinking=no_think),
-            dict(base_params, system=sys_cache, temperature=temperature),
-            dict(base_params, system=sys_cache),
-            dict(base_params, system=system_prompt),
-        ]
-        resp = None
-        last_err = None
-        for p in attempts:
-            try:
-                resp = client.messages.create(**p)
-                break
-            except (TypeError, anthropic.APIStatusError, anthropic.APIConnectionError) as e:
-                last_err = e
-                continue
-        if resp is None:
-            raise last_err or RuntimeError("Không gọi được Claude")
-    except anthropic.APIStatusError as e:
-        logger.error("Claude API lỗi: %s", e)
-        raise HTTPException(status_code=502, detail=f"Claude API lỗi: {getattr(e,'status_code','?')}")
-    except anthropic.APIConnectionError:
-        raise HTTPException(status_code=503, detail="Không kết nối được tới Claude API.")
-    except Exception as e:
-        logger.exception("Lỗi gọi Claude")
-        raise HTTPException(status_code=500, detail=f"Lỗi khi gọi Claude: {e}")
-    ket_qua = _extract_text(resp)
-    if not ket_qua:
-        types = [getattr(b, "type", "?") for b in (resp.content or [])]
-        sr = getattr(resp, "stop_reason", "?")
-        logger.error("Claude rỗng: stop_reason=%s block_types=%s", sr, types)
-        raise HTTPException(status_code=502,
-            detail=f"Claude không trả về nội dung (stop_reason={sr}, blocks={types}).")
-    return ket_qua
+    model_list = (DEEP_MODELS + [CLAUDE_MODEL]) if deep else [model or CLAUDE_MODEL]
+    tried = []
+    for m in model_list:
+        tried.append(m)
+        kq = _try_model(client, m, system_prompt, sys_cache, messages, max_tokens, temperature)
+        if kq:
+            LAST_MODEL_USED = m
+            return kq
+    logger.error("Không model nào trả về nội dung. Đã thử: %s", tried)
+    raise HTTPException(status_code=502,
+        detail=f"Claude không trả về nội dung (đã thử: {', '.join(tried)}).")
 
 # ------------------------------------------------------------------ FastAPI app
 app = FastAPI(title="AI Đại sư Tử Vi — Ứng Dụng Cảm Xạ", version="2.0.0")
@@ -402,9 +378,9 @@ def luan_giai(req: LaSoRequest):
         user_content = ("Các con số Thần Số của Mệnh chủ:\n" + tt +
                         "\n\nXin đại sư luận giải Thần Số đầy đủ, dễ hiểu theo quy trình 5 phần, "
                         "KẾT THÚC bằng phần Điểm Tốt · Điểm Xấu · Giải Pháp rõ ràng.")
-        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=4500, deep=True, think_budget=3000)
+        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=3000, deep=True)
         _cache_set(key, {"luan_giai": luan, "phu_trich": []})
-        return {"luan_giai": luan, "phu_trich": [], "la_so": None, "tu_cache": False}
+        return {"luan_giai": luan, "phu_trich": [], "la_so": None, "tu_cache": False, "model_dung": LAST_MODEL_USED}
 
     # ----- Nhánh TỬ VI (mặc định) -----
     try:
@@ -431,9 +407,9 @@ def luan_giai(req: LaSoRequest):
         "Xin đại sư luận giải đầy đủ theo quy trình 4 bước, "
         "KẾT THÚC bằng Bước 4: Điểm Tốt · Điểm Xấu · Giải Pháp rõ ràng."
     )
-    luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=4500, deep=True, think_budget=3000)
+    luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=3000, deep=True)
     _cache_set(key, {"luan_giai": luan, "phu_trich": phu})
-    return {"luan_giai": luan, "phu_trich": phu, "la_so": None, "tu_cache": False}
+    return {"luan_giai": luan, "phu_trich": phu, "la_so": None, "tu_cache": False, "model_dung": LAST_MODEL_USED}
 
 @app.post("/hoi-dai-su")
 def hoi_dai_su(req: HoiDapRequest):
@@ -445,9 +421,8 @@ def hoi_dai_su(req: HoiDapRequest):
         user_content = ("Các con số Thần Số của Mệnh chủ:\n" + tt +
                         f"\n\nCâu hỏi của Mệnh chủ: {req.cau_hoi.strip()}\n\n"
                         "Xin đại sư trả lời đúng trọng tâm, dựa trên các con số.")
-        tra_loi = goi_claude(PROMPT_HOIDAP_THANSO, user_content, max_tokens=1200,
-                             temperature=0.85, model=QA_MODEL)
-        return {"tra_loi": tra_loi, "cau_hoi": req.cau_hoi}
+        tra_loi = goi_claude(PROMPT_HOIDAP_THANSO, user_content, max_tokens=1800, deep=True)
+        return {"tra_loi": tra_loi, "cau_hoi": req.cau_hoi, "model_dung": LAST_MODEL_USED}
 
     # ----- Nhánh TỬ VI (mặc định) -----
     try:
@@ -474,8 +449,8 @@ def hoi_dai_su(req: HoiDapRequest):
         f"Câu hỏi của Mệnh chủ: {req.cau_hoi.strip()}\n\n"
         "Xin đại sư trả lời đúng trọng tâm, dựa trên lá số."
     )
-    tra_loi = goi_claude(PROMPT_HOIDAP, user_content, max_tokens=1500, temperature=0.85, model=QA_MODEL)
-    return {"tra_loi": tra_loi, "cau_hoi": req.cau_hoi}
+    tra_loi = goi_claude(PROMPT_HOIDAP, user_content, max_tokens=1800, deep=True)
+    return {"tra_loi": tra_loi, "cau_hoi": req.cau_hoi, "model_dung": LAST_MODEL_USED}
 
 @app.post("/admin/tao-ma")
 def admin_tao_ma(req: TaoMaRequest, x_admin_token: Optional[str] = Header(default=None)):
