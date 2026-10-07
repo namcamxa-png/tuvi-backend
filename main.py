@@ -55,6 +55,8 @@ logger = logging.getLogger("tuvi-api")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "").strip()
 CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-3-5-sonnet-latest")   # luận giải đầy đủ
 QA_MODEL = os.getenv("QA_MODEL", "claude-3-5-haiku-latest")           # Hỏi-Đáp (rẻ hơn)
+DEEP_MODEL = os.getenv("DEEP_MODEL", "claude-sonnet-5-5")             # luận SÂU (model mạnh + thinking)
+THINK_BUDGET = int(os.getenv("THINK_BUDGET", "3000"))                # token để model "suy nghĩ" nội bộ
 PHU_DB_PATH = os.getenv("PHU_DB_PATH", "database_phu.json")
 MAX_PHU = int(os.getenv("MAX_PHU", "8"))
 
@@ -213,38 +215,68 @@ def _get_client() -> anthropic.Anthropic:
         raise HTTPException(status_code=500, detail="Chưa cấu hình ANTHROPIC_API_KEY trên server.")
     return anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
+def _extract_text(resp) -> str:
+    """Lấy text từ mọi khối content, bỏ qua khối 'thinking'."""
+    parts = []
+    for b in (resp.content or []):
+        t = getattr(b, "text", None)
+        if t:
+            parts.append(t)
+    return "\n".join(parts).strip()
+
 def goi_claude(system_prompt: str, user_content: str, max_tokens: int = 1500,
-               temperature: float = 0.8, model: str = None) -> str:
+               temperature: float = 0.8, model: str = None,
+               deep: bool = False, think_budget: int = 0) -> str:
+    """
+    deep=True  -> dùng DEEP_MODEL (Sonnet) + extended thinking: model NGẪM SÂU lá số
+                  trong đầu rồi viết bản luận cô đọng, chạm đúng. Nếu lỗi/rỗng -> tự lùi
+                  về Haiku (không thinking) để KHÔNG BAO GIỜ trả rỗng.
+    """
     client = _get_client()
-    # Gọi có khả năng tự thích ứng với nhiều phiên bản SDK anthropic:
-    # nếu SDK không nhận 'temperature' -> bỏ; nếu không nhận system dạng list
-    # (prompt caching) -> hạ về system dạng chuỗi.
+    sys_cache = [{"type": "text", "text": system_prompt, "cache_control": {"type": "ephemeral"}}]
+    messages = [{"role": "user", "content": user_content}]
+
+    # ---------- 1) Chế độ SÂU: model mạnh + thinking ----------
+    if deep:
+        tb = think_budget or THINK_BUDGET
+        mt = max(max_tokens, tb + 1500)            # max_tokens phải > ngân sách nghĩ
+        think = {"type": "enabled", "budget_tokens": tb}
+        # thinking BẬT thì KHÔNG được set temperature tùy ý -> bỏ temperature
+        deep_attempts = [
+            dict(model=DEEP_MODEL, max_tokens=mt, messages=messages, system=sys_cache, thinking=think),
+            dict(model=DEEP_MODEL, max_tokens=mt, messages=messages, system=system_prompt, thinking=think),
+        ]
+        for p in deep_attempts:
+            try:
+                r = client.messages.create(**p)
+                kq = _extract_text(r)
+                if kq:
+                    return kq
+                logger.warning("Deep model rỗng (stop=%s) -> thử tiếp/fallback", getattr(r, "stop_reason", "?"))
+            except (TypeError, anthropic.APIStatusError, anthropic.APIConnectionError) as e:
+                logger.warning("Deep model lỗi: %s -> fallback", e)
+        logger.warning("DEEP không ra kết quả -> lùi về Haiku (%s)", CLAUDE_MODEL)
+
+    # ---------- 2) Mặc định / fallback: Haiku (không thinking) ----------
     base_params = dict(
         model=model or CLAUDE_MODEL,
         max_tokens=max_tokens,
-        messages=[{"role": "user", "content": user_content}],
+        messages=messages,
     )
-    sys_cache = [{"type": "text", "text": system_prompt, "cache_control": {"type": "ephemeral"}}]
-
-    def _try(params):
-        return client.messages.create(**params)
-
-    # Model đời mới (Claude 5) mặc định BẬT "thinking" -> ăn hết token, không còn chỗ
-    # viết bài. Tắt thinking để model viết thẳng bài luận. Giữ cache_control để rẻ.
     no_think = {"type": "disabled"}
     try:
         attempts = [
-            dict(base_params, system=sys_cache, thinking=no_think),           # tắt thinking + cache (ưu tiên)
-            dict(base_params, system=system_prompt, thinking=no_think),       # tắt thinking, system chuỗi
-            dict(base_params, system=sys_cache, temperature=temperature),     # (SDK không nhận thinking) cache + temp
-            dict(base_params, system=sys_cache),                              # cache
-            dict(base_params, system=system_prompt),                          # tối giản
+            dict(base_params, system=sys_cache, thinking=no_think),
+            dict(base_params, system=system_prompt, thinking=no_think),
+            dict(base_params, system=sys_cache, temperature=temperature),
+            dict(base_params, system=sys_cache),
+            dict(base_params, system=system_prompt),
         ]
         resp = None
         last_err = None
         for p in attempts:
             try:
-                resp = _try(p)
+                resp = client.messages.create(**p)
                 break
             except (TypeError, anthropic.APIStatusError, anthropic.APIConnectionError) as e:
                 last_err = e
@@ -259,13 +291,7 @@ def goi_claude(system_prompt: str, user_content: str, max_tokens: int = 1500,
     except Exception as e:
         logger.exception("Lỗi gọi Claude")
         raise HTTPException(status_code=500, detail=f"Lỗi khi gọi Claude: {e}")
-    # Trích text từ mọi khối content (bỏ qua khối thinking/khác)
-    parts = []
-    for b in (resp.content or []):
-        t = getattr(b, "text", None)
-        if t:
-            parts.append(t)
-    ket_qua = "\n".join(parts).strip()
+    ket_qua = _extract_text(resp)
     if not ket_qua:
         types = [getattr(b, "type", "?") for b in (resp.content or [])]
         sr = getattr(resp, "stop_reason", "?")
@@ -376,7 +402,7 @@ def luan_giai(req: LaSoRequest):
         user_content = ("Các con số Thần Số của Mệnh chủ:\n" + tt +
                         "\n\nXin đại sư luận giải Thần Số đầy đủ, dễ hiểu theo quy trình 5 phần, "
                         "KẾT THÚC bằng phần Điểm Tốt · Điểm Xấu · Giải Pháp rõ ràng.")
-        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=6500, temperature=0.85)
+        luan = goi_claude(PROMPT_THANSO, user_content, max_tokens=4500, deep=True, think_budget=3000)
         _cache_set(key, {"luan_giai": luan, "phu_trich": []})
         return {"luan_giai": luan, "phu_trich": [], "la_so": None, "tu_cache": False}
 
@@ -405,7 +431,7 @@ def luan_giai(req: LaSoRequest):
         "Xin đại sư luận giải đầy đủ theo quy trình 4 bước, "
         "KẾT THÚC bằng Bước 4: Điểm Tốt · Điểm Xấu · Giải Pháp rõ ràng."
     )
-    luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=6500, temperature=0.8)
+    luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=4500, deep=True, think_budget=3000)
     _cache_set(key, {"luan_giai": luan, "phu_trich": phu})
     return {"luan_giai": luan, "phu_trich": phu, "la_so": None, "tu_cache": False}
 
