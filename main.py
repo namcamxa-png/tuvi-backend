@@ -404,8 +404,13 @@ def luan_giai(req: LaSoRequest):
         f"{tom_tat}\n\n"
         f"Câu phú cổ ứng với lá số:\n{_phu_text(phu)}\n\n"
         f"{kb_block}"
-        "Xin đại sư luận giải đầy đủ theo quy trình 4 bước, "
-        "KẾT THÚC bằng Bước 4: Điểm Tốt · Điểm Xấu · Giải Pháp rõ ràng."
+        "Xin đại sư luận giải NGẮN GỌN theo đúng 3 phần: "
+        "(1) TỔNG LUẬN — tính cách & con người, sự nghiệp & cuộc đời, hôn nhân, gia đình, sức khỏe; "
+        "(2) LUẬN THEO ĐẠI VẬN 10 NĂM đang đi; "
+        "(3) LỜI KHUYÊN cho lá số. "
+        "KHÔNG luận lần lượt đủ 12 cung, KHÔNG dùng nhãn 'Bước 1/2/3/4'. "
+        "Dòng CUỐI bài là đúng một câu in nghiêng: "
+        "*Nội dung mang tính tham khảo, không thay thế quyết định cá nhân.*"
     )
     luan = goi_claude(SYSTEM_PROMPT, user_content, max_tokens=3000, deep=True)
     _cache_set(key, {"luan_giai": luan, "phu_trich": phu})
